@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 // TODO: add visitor pattern (visitor classes and accept function to all class-hierarchy).
 //  Do not add any functionality to the FileDetails hierarchy apart from the visitor pattern implementation.
 public abstract class FileDetails {
@@ -24,4 +26,6 @@ public abstract class FileDetails {
     public String getPath() {
         return path;
     }
+
+    public abstract void accept (Visitor visitor);
 }

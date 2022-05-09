@@ -1,11 +1,24 @@
-// TODO: Implement Composite (change this file).
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class DirectoryDetails extends FileDetails {
-    public DirectoryDetails(String path, String name){
-        super(path,name);
+
+    private ArrayList<FileDetails> filesDetails;
+
+    public DirectoryDetails(String path, String name) {
+        super(path, name);
+        filesDetails = new ArrayList<>();
     }
 
+    @Override
+    public void accept(Visitor visitor) {
+        for (var item : filesDetails) {
+            item.accept(visitor);
+        }
+        visitor.visitor(this);
+    }
 
-    public void addFile(FileDetails fileDetails){
-        // TODO: complete
+    public void addFile(FileDetails fileDetails) {
+        filesDetails.add(fileDetails);
     }
 }

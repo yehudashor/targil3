@@ -35,7 +35,7 @@ public class Main {
     }
 
     public static void fileMenu(Scanner scanner) throws IOException {
-        String path = "files.txt";
+        String path = "C:\\Users\\97253\\IdeaProjects\\targil 3\\src\\files.txt";
         FileDetails root = readFileDetails(path);
         System.out.println("Choose from the following options:\n" +
                 "q: quit\n" +
@@ -47,16 +47,21 @@ public class Main {
         while (!(myString = scanner.nextLine()).equals("q")) {
             switch (myString) {
                 case "c":
-                    //TODO: Add counting behavior
+                    VisitorFilesCount visitorFilesCount = new VisitorFilesCount();
+                    root.accept(visitorFilesCount);
+                    System.out.println("Found " + visitorFilesCount.getFileCount() + " files.");
                     break;
                 case "sz":
-                    //TODO: Add size calculation behavior
+                    VisitorSizeCalculator visitorSizeCalculator = new VisitorSizeCalculator();
+                    root.accept(visitorSizeCalculator);
+                    System.out.println("the total size is " + visitorSizeCalculator.getSizeCalculator() + " bytes");
                     break;
                 case "st":
-                    //TODO: Add statistics behavior
+
                     break;
                 case "sh":
-                    //TODO: Add short representation behavior
+                    root.accept(new VisitorShortPrint());
+                    break;
             }
         }
     }
@@ -80,7 +85,7 @@ public class Main {
                 hamburger = toppingMenu(scanner, hamburger);
             }
             if (choice.equals("s")) {
-                System.out.println(hamburger.serve());
+                //System.out.println(hamburger.serve());
 
             }
         }
