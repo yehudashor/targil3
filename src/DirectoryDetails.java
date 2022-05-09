@@ -3,7 +3,7 @@ import java.util.HashSet;
 
 public class DirectoryDetails extends FileDetails {
 
-    private ArrayList<FileDetails> filesDetails;
+    public ArrayList<FileDetails> filesDetails;
 
     public DirectoryDetails(String path, String name) {
         super(path, name);

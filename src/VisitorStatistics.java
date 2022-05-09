@@ -9,6 +9,8 @@ public class VisitorStatistics implements Visitor {
     private long countOfLineHtml;
     private long sizeOfPptx;
     private long slidesOfPptx;
+    private long wordsOfDocx;
+    private long pagesOfDocx;
     public Map <String, Integer> CountOfFilesInFolders = new HashMap<>();
 
     public long getCountOfLine() {
@@ -19,8 +21,12 @@ public class VisitorStatistics implements Visitor {
         countOfLineHtml += _countOfLine;
     }
 
-    public long AverageSizeSlide(){
+    public long AverageSizeSlidePptx(){
         return sizeOfPptx / slidesOfPptx;
+    }
+
+    public long AverageWordsPagesDocx(){
+        return wordsOfDocx / pagesOfDocx;
     }
 
     private long round(double number) {
@@ -59,15 +65,24 @@ public class VisitorStatistics implements Visitor {
         slidesOfPptx += _slidesOfPptx;
     }
 
+    private void setWordsOfDocx(int _wordsOfDocx ){
+        wordsOfDocx += _wordsOfDocx;
+    }
+
+    private void setPagesOfDocx(int _pagesOfDocx ){
+        pagesOfDocx += _pagesOfDocx;
+    }
+
 
     @Override
     public void visitor(DirectoryDetails directoryDetails) {
-
+        CountOfFilesInFolders.put(directoryDetails.name, directoryDetails.filesDetails.size());
     }
 
     @Override
     public void visitor(DocxFileDetails docxFileDetails) {
-
+        setWordsOfDocx(docxFileDetails.getWords());
+        setPagesOfDocx(docxFileDetails.getPages());
     }
 
     @Override
