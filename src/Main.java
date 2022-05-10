@@ -57,6 +57,20 @@ public class Main {
                     System.out.println("the total size is " + visitorSizeCalculator.getSizeCalculator() + " bytes");
                     break;
                 case "st":
+                    VisitorStatistics visitorStatistics = new VisitorStatistics();
+                    root.accept(visitorStatistics);
+                    System.out.println("The bitrate of song.mp3 is "+ visitorStatistics.GetBytesPerSecondMp3() +
+                            " bytes per second." );
+                    System.out.println("The picture icon.jpg has an average of " + visitorStatistics.GetBytesPerPixelJpg() +
+                            " bytes per pixel.");
+                    System.out.println("The file text.txt contains  " + visitorStatistics.GetCountOfWordsTxt() +
+                            " words.");
+                    System.out.println("The file other.html contains " + visitorStatistics.GetCountOfLineHtml() +
+                            " lines.");
+                    System.out.println("The average slide size in Presentation Swed.pptx is " + visitorStatistics.AverageSizeSlidePptx() + ".");
+
+                    System.out.println("The file word.docx has an average of " + visitorStatistics.AverageWordsPagesDocx() +
+                            " words per page.");
 
                     break;
                 case "sh":
