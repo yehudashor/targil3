@@ -57,21 +57,7 @@ public class Main {
                     System.out.println("the total size is " + visitorSizeCalculator.getSizeCalculator() + " bytes");
                     break;
                 case "st":
-                    VisitorStatistics visitorStatistics = new VisitorStatistics();
-                    root.accept(visitorStatistics);
-                    System.out.println("The bitrate of song.mp3 is "+ visitorStatistics.GetBytesPerSecondMp3() +
-                            " bytes per second." );
-                    System.out.println("The picture icon.jpg has an average of " + visitorStatistics.GetBytesPerPixelJpg() +
-                            " bytes per pixel.");
-                    System.out.println("The file text.txt contains  " + visitorStatistics.GetCountOfWordsTxt() +
-                            " words.");
-                    System.out.println("The file other.html contains " + visitorStatistics.GetCountOfLineHtml() +
-                            " lines.");
-                    System.out.println("The average slide size in Presentation Swed.pptx is " + visitorStatistics.AverageSizeSlidePptx() + ".");
-
-                    System.out.println("The file word.docx has an average of " + visitorStatistics.AverageWordsPagesDocx() +
-                            " words per page.");
-
+                    root.accept(new VisitorStatistics());
                     break;
                 case "sh":
                     root.accept(new VisitorShortPrint());
@@ -80,15 +66,26 @@ public class Main {
         }
     }
 
+    private void OnVisitor() {
+
+    }
+
     public static void hamburgerMenu(Scanner scanner) {
         System.out.println("Choose from the following hamburgers:\n" +
                 "cl: classic\n" +
                 "sp: spicy\n" +
                 "la: lamb\n" +
                 "hm: homemade");
-        // TODO: Add a Hamburger Factory and use it to create a Hamburger
+
         Hamburger hamburger = null;
 
+        try {
+            hamburger = HamburgerFactory.createHamburger(scanner.nextLine());
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        System.out.println(hamburger.serve());
+        ToppingAbstractFactory toppingAbstractFactory = null;
         String choice = "";
         while (!choice.equals("s")) {
             System.out.println("Choose from the following options:\n" +
@@ -96,24 +93,29 @@ public class Main {
                     "s: serve");
             choice = scanner.nextLine();
             if (choice.equals("a")) {
-                hamburger = toppingMenu(scanner, hamburger);
-            }
-            if (choice.equals("s")) {
-                //System.out.println(hamburger.serve());
+                if (toppingAbstractFactory == null) {
+                    toppingAbstractFactory = new ToppingFactory();
+                }
 
+                try {
+                    hamburger = toppingMenu(scanner, hamburger, toppingAbstractFactory);
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
             }
         }
-
-
+        if (choice.equals("s")) {
+            System.out.println(hamburger.serve());
+        }
     }
 
-    public static Hamburger toppingMenu(Scanner scanner, Hamburger hamburger) {
+    public static Hamburger toppingMenu(Scanner scanner, Hamburger hamburger, ToppingAbstractFactory toppingAbstractFactory) {
         System.out.println("Choose from the following toppings:\n" +
                 "ch: chips\n" +
                 "or: onion rings\n" +
                 "sa: salad\n" +
                 "fe: friedEgg");
-        // TODO: Add a Hamburger-Topping Factory and use it to create a decorated Hamburger
-        return null;
+
+        return toppingAbstractFactory.getTopping(scanner.nextLine(), hamburger);
     }
 }

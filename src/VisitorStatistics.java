@@ -76,38 +76,44 @@ public class VisitorStatistics implements Visitor {
 
     @Override
     public void visitor(DirectoryDetails directoryDetails) {
-        CountOfFilesInFolders.put(directoryDetails.name, directoryDetails.filesDetails.size());
+        System.out.println("Directory " + directoryDetails.getName() + " has " +
+                directoryDetails.filesDetails.size() + " files");
     }
 
     @Override
     public void visitor(DocxFileDetails docxFileDetails) {
-        setWordsOfDocx(docxFileDetails.getWords());
-        setPagesOfDocx(docxFileDetails.getPages());
+        System.out.println("The file " + docxFileDetails.getName() + " has an average of " +
+                        docxFileDetails.getWords() / docxFileDetails.getPages() + " words per page.");
     }
 
     @Override
     public void visitor(HtmlFileDetails htmlFileDetails) {
-        setCountOfLineHtml(htmlFileDetails.getLines());
+        System.out.println("The file " + htmlFileDetails.getName() + " contains " + htmlFileDetails.getLines() +
+                " lines.");
     }
 
     @Override
     public void visitor(JpgFileDetails jpgFileDetails) {
-        setBytesPerSecondPixelJpg(jpgFileDetails.getSize() / jpgFileDetails.getHeight() * jpgFileDetails.getWidth());
+        System.out.println("The picture " + jpgFileDetails.getName() + " has an average of " +
+                round( jpgFileDetails.getSize() / jpgFileDetails.getHeight() * jpgFileDetails.getWidth()) +
+                " bytes per pixel.");
     }
 
     @Override
     public void visitor(Mp3FileDetails mp3FileDetails) {
-        setBytesPerSecondMp3(mp3FileDetails.getSize() / mp3FileDetails.getLengthSec());
+        System.out.println("The bitrate of song.mp3 is " + mp3FileDetails.getSize() / mp3FileDetails.getLengthSec() +
+                " bytes per second.");
     }
 
     @Override
     public void visitor(PptxFileDetails pptxFileDetails) {
-        setSizeOfPptx(pptxFileDetails.getSize());
-        setSlidesOfPptx(pptxFileDetails.getSlides());
+        System.out.println("The average slide size in Presentation " + pptxFileDetails.getName() + " is "
+                + pptxFileDetails.getSize() / pptxFileDetails.getSlides() + ".");
     }
 
     @Override
     public void visitor(TxtFileDetails txtFileDetails) {
-        setCountOfWordsTxt(txtFileDetails.getWords());
+        System.out.println("The file " + txtFileDetails.getName() + " contains " + txtFileDetails.getWords() +
+                " words.");
     }
 }
