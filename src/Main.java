@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
+@SuppressWarnings("unchecked")
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -66,10 +66,6 @@ public class Main {
         }
     }
 
-    private void OnVisitor() {
-
-    }
-
     public static void hamburgerMenu(Scanner scanner) {
         System.out.println("Choose from the following hamburgers:\n" +
                 "cl: classic\n" +
@@ -84,7 +80,7 @@ public class Main {
         } catch (Exception ex) {
             System.out.println(ex);
         }
-        System.out.println(hamburger.serve());
+
         ToppingAbstractFactory toppingAbstractFactory = null;
         String choice = "";
         while (!choice.equals("s")) {

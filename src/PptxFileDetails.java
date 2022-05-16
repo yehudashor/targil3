@@ -1,3 +1,5 @@
+
+// class for Pptx File that extends from File Details.
 public class PptxFileDetails extends FileDetails {
     private int slides;
     private int size;

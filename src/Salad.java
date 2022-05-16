@@ -1,3 +1,5 @@
+
+// class for Salad.
 public class Salad extends ToppingDecorator {
     public Salad(Hamburger hamburger) {
         super(hamburger);

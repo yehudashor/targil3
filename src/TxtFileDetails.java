@@ -1,3 +1,5 @@
+
+// class for Txt File that extends from File Details.
 public class TxtFileDetails extends FileDetails {
     private int words;
     private int size;

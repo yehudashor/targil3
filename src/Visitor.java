@@ -1,3 +1,5 @@
+
+// interface for Visitor design pattern.
 public interface Visitor {
     void visitor(DirectoryDetails directoryDetails);
     void visitor(DocxFileDetails docxFileDetails);

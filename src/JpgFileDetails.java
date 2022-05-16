@@ -1,3 +1,5 @@
+
+// class for Jpg File that extends from File Details.
 public class JpgFileDetails extends FileDetails {
     private int width;
     private int height;

@@ -1,6 +1,8 @@
 
+// Factory class.
 public class HamburgerFactory {
 
+    // Function for create different types of Hamburgers by code.
     public static Hamburger createHamburger(String code) {
         switch (code) {
             case "cl":

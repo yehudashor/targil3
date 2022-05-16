@@ -1,3 +1,5 @@
+
+// class for Mp3 File that extends from File Details.
 public class Mp3FileDetails extends FileDetails {
     private int lengthSec;
     private int size;

@@ -1,3 +1,6 @@
+
+// Class for print all files name in the system.
+
 public class VisitorShortPrint implements Visitor {
 
     private void printName(String name){

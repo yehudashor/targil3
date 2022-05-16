@@ -1,3 +1,5 @@
+
+// class for Docx File that extends from File Details.
 public class DocxFileDetails extends FileDetails {
     private int words;
     private int pages;

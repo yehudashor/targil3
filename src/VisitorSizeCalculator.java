@@ -1,15 +1,18 @@
-public class VisitorSizeCalculator implements Visitor{
+// Class for size files Calculator in the system.
+
+public class VisitorSizeCalculator implements Visitor {
     private long sizeCalculator;
 
     private void setSizeCalculator(int sizeCalculator) {
-       this.sizeCalculator += sizeCalculator;
+        this.sizeCalculator += sizeCalculator;
     }
 
-    public long getSizeCalculator() { return sizeCalculator; }
+    public long getSizeCalculator() {
+        return sizeCalculator;
+    }
 
     @Override
     public void visitor(DirectoryDetails directoryDetails) {
-
     }
 
     @Override

@@ -1,3 +1,4 @@
+// class for Html File that extends from File Details.
 public class HtmlFileDetails extends FileDetails {
     private int lines;
     private int size;

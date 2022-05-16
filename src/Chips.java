@@ -1,3 +1,5 @@
+
+//  class for Chips.
 public class Chips extends ToppingDecorator {
     public Chips(Hamburger hamburger) {
         super(hamburger);

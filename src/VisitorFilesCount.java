@@ -1,3 +1,5 @@
+
+// Class that summarizes the number of files in the system.
 public class VisitorFilesCount implements Visitor{
 
     private int fileCount;

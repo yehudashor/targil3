@@ -1,3 +1,5 @@
+
+// class for Onion Rings.
 public class OnionRings extends ToppingDecorator {
     public OnionRings(Hamburger hamburger) {
         super(hamburger);

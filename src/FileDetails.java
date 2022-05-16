@@ -1,7 +1,4 @@
-import java.util.HashSet;
-
-// TODO: add visitor pattern (visitor classes and accept function to all class-hierarchy).
-//  Do not add any functionality to the FileDetails hierarchy apart from the visitor pattern implementation.
+// abstract class File Details this is the base class of all files in the system.
 public abstract class FileDetails {
     protected String name;
     private String path;
@@ -27,5 +24,6 @@ public abstract class FileDetails {
         return path;
     }
 
-    public abstract void accept (Visitor visitor);
+    // Function that Is part of the visitor design pattern.
+    public abstract void accept(Visitor visitor);
 }
