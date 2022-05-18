@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
 @SuppressWarnings("unchecked")
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -36,7 +36,7 @@ public class Main {
     }
 
     public static void fileMenu(Scanner scanner) throws IOException {
-        String path = "C:\\Users\\97253\\IdeaProjects\\targil 3\\src\\files.txt";
+        String path = "files.txt";
         FileDetails root = readFileDetails(path);
         System.out.println("Choose from the following options:\n" +
                 "q: quit\n" +
@@ -66,6 +66,7 @@ public class Main {
             }
         }
     }
+
 
     public static void hamburgerMenu(Scanner scanner) {
         System.out.println("Choose from the following hamburgers:\n" +
@@ -111,7 +112,7 @@ public class Main {
                 "ch: chips\n" +
                 "or: onion rings\n" +
                 "sa: salad\n" +
-                "fe: friedEgg");
+                "fe: fried egg");
 
         return toppingAbstractFactory.getTopping(scanner.nextLine(), hamburger);
     }
