@@ -6,10 +6,16 @@ public class VisitorStatistics implements Visitor {
         return Math.round(number);
     }
 
+    VisitorFilesCount visitorFilesCount;
+
+    public VisitorStatistics(VisitorFilesCount _visitorFilesCount) {
+        visitorFilesCount = _visitorFilesCount;
+    }
+
     @Override
     public void visitor(DirectoryDetails directoryDetails) {
         System.out.println("Directory " + directoryDetails.getName() + " has " +
-                directoryDetails.filesDetails.size() + " files");
+                visitorFilesCount.filesCount.get(directoryDetails.getName()) + " files");
     }
 
     @Override
@@ -27,7 +33,7 @@ public class VisitorStatistics implements Visitor {
     @Override
     public void visitor(JpgFileDetails jpgFileDetails) {
         System.out.println("The picture " + jpgFileDetails.getName() + " has an average of " +
-                round((double)jpgFileDetails.getSize() / (jpgFileDetails.getHeight() * jpgFileDetails.getWidth())) +
+                round((double) jpgFileDetails.getSize() / (jpgFileDetails.getHeight() * jpgFileDetails.getWidth())) +
                 " bytes per pixel.");
     }
 

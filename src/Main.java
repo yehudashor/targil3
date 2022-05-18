@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
 @SuppressWarnings("unchecked")
 public class Main {
 
@@ -44,12 +45,12 @@ public class Main {
                 "sh: short\n" +
                 "sz: size");
         String myString;
+        VisitorFilesCount visitorFilesCount = new VisitorFilesCount();
+        root.accept(visitorFilesCount);
         while (!(myString = scanner.nextLine()).equals("q")) {
             switch (myString) {
                 case "c":
-                    VisitorFilesCount visitorFilesCount = new VisitorFilesCount();
-                    root.accept(visitorFilesCount);
-                    System.out.println("Found " + visitorFilesCount.getFileCount() + " files.");
+                    System.out.println("Found " + visitorFilesCount.filesCount.get("root") + " files.");
                     break;
                 case "sz":
                     VisitorSizeCalculator visitorSizeCalculator = new VisitorSizeCalculator();
@@ -57,7 +58,7 @@ public class Main {
                     System.out.println("the total size is " + visitorSizeCalculator.getSizeCalculator() + " bytes");
                     break;
                 case "st":
-                    root.accept(new VisitorStatistics());
+                    root.accept(new VisitorStatistics(visitorFilesCount));
                     break;
                 case "sh":
                     root.accept(new VisitorShortPrint());
